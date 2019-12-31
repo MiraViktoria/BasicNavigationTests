@@ -4,21 +4,20 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
 public class BrowserFactory {
-    public static WebDriver getDriver(String browser){
-        String sName=System.getProperty("s.name");
-        System.out.println(sName);
-        if (browser.equalsIgnoreCase("chrome")) {
+    //we gonna create a method
+    //that will return a webdriver object
+    //this method will take one parameter - String browser
+    //based on the value of the browser parameter
+    //method will return corresponded webdriver object
+    //if browser=chrome, then return chromedriver object
+    public static WebDriver getDriver (String browser){
+        if (browser.equals("chrome")){
             WebDriverManager.chromedriver().setup();
             return new ChromeDriver();
-        }  else if (browser.equalsIgnoreCase("firefox")) {
-            WebDriverManager.chromedriver().setup();
+        }else if (browser.equals("firefox")){
+            WebDriverManager.firefoxdriver().setup();
             return new FirefoxDriver();
-        } else if (browser.equalsIgnoreCase("safari")) {
-            return null;
-        }
-        return null;
+        } return null;
     }
-
 }

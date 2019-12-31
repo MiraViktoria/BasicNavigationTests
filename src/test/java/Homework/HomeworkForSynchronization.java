@@ -1,4 +1,4 @@
-package com.cbt.tests;
+package Homework;
 
 import com.cbt.utilities.BrowserUtils;
 import com.cbt.utilities.Driver;
@@ -98,7 +98,7 @@ public class HomeworkForSynchronization {
     }
 
     @Test(description = "Verify that following data is displayed:")
-    public void test6(){
+    public void test6() {
         BrowserUtils.wait(5);
         driver.findElement(By.xpath("//*[normalize-space()='Activities' and @class='title title-level-1']")).click();
         driver.findElement(By.xpath("//*[normalize-space()='Calendar Events' and @class='title title-level-2']")).click();
@@ -109,17 +109,19 @@ public class HomeworkForSynchronization {
         List<WebElement> divs = driver.findElements(By.xpath("//div[@class=\"control-label\"]"));
         divs.add(driver.findElement(By.xpath("//p[text()=\"This is a a weekly testers meeting\"]")));
         // BrowserUtils.wait(10);
-        for(WebElement label: labels){
-            if(label.isDisplayed()){
-                System.out.println("Passed "+ label.getText());
+        for (WebElement label : labels) {
+            if (label.isDisplayed()) {
+                System.out.println("Passed " + label.getText());
             }
         }
-        for (WebElement div: divs){
-            if(div.isDisplayed()){
-                System.out.println("Passed "+div.getText());
+        for (WebElement div : divs) {
+            if (div.isDisplayed()) {
+                System.out.println("Passed " + div.getText());
             }
         }
-    }
+
+
+        }
 
         @AfterMethod
         public void teardown () {
