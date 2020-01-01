@@ -105,5 +105,21 @@ public class HomeworkForTestNG {
        driver.close();
 
     }
+    @Test
+    public void test7(){
+       driver.get("https://practice-cybertekschool.herokuapp.com/");
+       driver.findElement(By.xpath("//*[@id=\"content\"]/ul/li[18]/a")).click();
+       driver.findElement(By.xpath("//*[@id=\"file-upload\"]")).click();
+       driver.findElement(By.xpath("//*[@id=\"content\"]/div/h3")).getText();
+        System.out.println("File Uploaded!");
+        driver.findElement(By.xpath("//*[@id=\"uploaded-files\"]")).isDisplayed();
+        driver.close();
+
+    }
+    @Test
+    public void test8(){
+
+
+    }
 
  }
