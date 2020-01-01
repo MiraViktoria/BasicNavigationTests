@@ -5,30 +5,32 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class HomeworkForTestNG {
     private WebDriver driver;
 
-   @BeforeMethod
-   public void  setup(){
+    @BeforeMethod
+    public void setup() {
 
-    driver = BrowserFactory.getDriver("chrome");
-    driver.get("https://practice-cybertekschool.herokuapp.com/");
-    driver.findElement(By.linkText("Registration Form")).click();
+        driver = BrowserFactory.getDriver("chrome");
+        driver.get("https://practice-cybertekschool.herokuapp.com/");
+        driver.findElement(By.linkText("Registration Form")).click();
 
-     }
-     @Test(description = "Verify that warning message is displayed")
-     public void test1() {
+    }
 
-         driver.findElement(By.xpath("//input[@name='birthday']")).sendKeys("wrong_dob");
-         driver.findElement(By.xpath("//*/div[8]/div/small[2]")).getText();
+    @Test(description = "Verify that warning message is displayed")
+    public void test1() {
+
+        driver.findElement(By.xpath("//input[@name='birthday']")).sendKeys("wrong_dob");
+        driver.findElement(By.xpath("//*/div[8]/div/small[2]")).getText();
 
 
-             System.out.println("The date of birth is not valid");
-         driver.close();
-         }
+        System.out.println("The date of birth is not valid");
+        driver.close();
+    }
 
     @Test(description = "Verify that options are displayed")
     public void test2() {
@@ -39,16 +41,18 @@ public class HomeworkForTestNG {
             System.out.println("C++, Java, JavaScript");
         driver.close();
     }
+
     @Test(description = "Verify that warning message is displayed")
-    public void test3(){
+    public void test3() {
         driver.findElement(By.xpath("//input[@name='firstname']")).sendKeys("v");
         driver.findElement(By.xpath("//*/div[1]/div/small[2]")).getText();
 
-            System.out.println("first name must be more than 2 and less than 64 characters long");
+        System.out.println("first name must be more than 2 and less than 64 characters long");
         driver.close();
     }
+
     @Test(description = "Verify that warning message is displayed")
-    public void test4(){
+    public void test4() {
         driver.findElement(By.xpath("//input[@name='lastname']")).sendKeys("v");
         driver.findElement(By.xpath("//*/div/small[2]")).getText();
 
@@ -57,7 +61,7 @@ public class HomeworkForTestNG {
     }
 
     @Test(description = "Verify that following success message is displayed")
-    public void test5(){
+    public void test5() {
         driver.findElement(By.xpath("//input[@name='firstname']")).sendKeys("Mira");
         driver.findElement(By.xpath("//input[@name='lastname']")).sendKeys("Von-Rohrbach");
         driver.findElement(By.xpath("//input[@name='username']")).sendKeys("Seraphine");
@@ -67,10 +71,10 @@ public class HomeworkForTestNG {
         driver.findElement(By.xpath("//input[@value='female']")).click();
 
 
-         driver.findElement(By.xpath("//input[@name='birthday']")).sendKeys("06/26/1973");
+        driver.findElement(By.xpath("//input[@name='birthday']")).sendKeys("06/26/1973");
 
         WebElement department = driver.findElement(By.xpath("//*/div[9]/div/select"));
-        Select select =new Select(department);
+        Select select = new Select(department);
         select.selectByValue("DE");
 
 
@@ -86,40 +90,54 @@ public class HomeworkForTestNG {
         System.out.println("You've successfully completed registration!");
         driver.close();
     }
+
     @Test
-    public void test6(){
-       driver.get("https://www.tempmailaddress.com/");
-       driver.findElement(By.xpath("//*[@id=\"home\"]/div/div[3]/ul/li[1]/a")).click();
-       driver.get("https://practice-cybertekschool.herokuapp.com/");
-       driver.findElement(By.xpath("//*/ul/li[43]/a")).click();
-       driver.findElement(By.xpath("//*/div[1]/div/input")).sendKeys("Mira Rohrbach");
-       driver.findElement(By.xpath("//*/div[2]/div/input")).sendKeys("cardin.advit@opka.org");
-       driver.findElement(By.xpath("//*/button")).click();
-       driver.findElement(By.xpath("//*/div/h3")).getText();
-       driver.navigate().to("https://www.tempmailaddress.com/");
-       driver.findElement(By.xpath("//*[@id=\"schranka\"]/tr[1]/td[1]")).click();
+    public void test6() {
+        driver.get("https://www.tempmailaddress.com/");
+        driver.findElement(By.xpath("//*[@id=\"home\"]/div/div[3]/ul/li[1]/a")).click();
+        driver.get("https://practice-cybertekschool.herokuapp.com/");
+        driver.findElement(By.xpath("//*/ul/li[43]/a")).click();
+        driver.findElement(By.xpath("//*/div[1]/div/input")).sendKeys("Mira Rohrbach");
+        driver.findElement(By.xpath("//*/div[2]/div/input")).sendKeys("cardin.advit@opka.org");
+        driver.findElement(By.xpath("//*/button")).click();
+        driver.findElement(By.xpath("//*/div/h3")).getText();
+        driver.navigate().to("https://www.tempmailaddress.com/");
+        driver.findElement(By.xpath("//*[@id=\"schranka\"]/tr[1]/td[1]")).click();
 
-       driver.findElement(By.xpath("//*[@id=\"odesilatel\"]")).isDisplayed();
+        driver.findElement(By.xpath("//*[@id=\"odesilatel\"]")).isDisplayed();
 
-       driver.findElement(By.xpath("//*[@id=\"predmet\"]")).isDisplayed();
-       driver.close();
+        driver.findElement(By.xpath("//*[@id=\"predmet\"]")).isDisplayed();
+        driver.close();
 
     }
     @Test
-    public void test7(){
-       driver.get("https://practice-cybertekschool.herokuapp.com/");
-       driver.findElement(By.xpath("//*[@id=\"content\"]/ul/li[18]/a")).click();
-       driver.findElement(By.xpath("//*[@id=\"file-upload\"]")).click();
-       driver.findElement(By.xpath("//*[@id=\"content\"]/div/h3")).getText();
-        System.out.println("File Uploaded!");
-        driver.findElement(By.xpath("//*[@id=\"uploaded-files\"]")).isDisplayed();
+    public void test7()throws Exception{
+        driver.get("https://practice-cybertekschool.herokuapp.com/");
+        driver.findElement(By.linkText("File Upload")).click();
+
+       driver.findElement(By.xpath("//*[@id='file-submit']")).click();
+       System.out.println("File Uploaded!");
+
+
         driver.close();
 
     }
     @Test
     public void test8(){
+        driver.get("https://practice-cybertekschool.herokuapp.com/");
+        driver.findElement(By.linkText("Autocomplete")).click();
+        driver.findElement(By.xpath("//*[@id=\"myCountry\"]")).sendKeys("United States of America");
+        driver.findElement(By.xpath("//*/div/form/input")).click();
+        driver.findElement(By.xpath("//*[@id=\"result\"]")).getText();
+        System.out.println("You selected: United States of America");
+        driver.close();
 
+    }
+    @AfterMethod
+    public void teardown(){
+        driver.quit();
+    }
 
     }
 
- }
+
