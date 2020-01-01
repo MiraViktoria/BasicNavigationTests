@@ -86,4 +86,24 @@ public class HomeworkForTestNG {
         System.out.println("You've successfully completed registration!");
         driver.close();
     }
+    @Test
+    public void test6(){
+       driver.get("https://www.tempmailaddress.com/");
+       driver.findElement(By.xpath("//*[@id=\"home\"]/div/div[3]/ul/li[1]/a")).click();
+       driver.get("https://practice-cybertekschool.herokuapp.com/");
+       driver.findElement(By.xpath("//*/ul/li[43]/a")).click();
+       driver.findElement(By.xpath("//*/div[1]/div/input")).sendKeys("Mira Rohrbach");
+       driver.findElement(By.xpath("//*/div[2]/div/input")).sendKeys("cardin.advit@opka.org");
+       driver.findElement(By.xpath("//*/button")).click();
+       driver.findElement(By.xpath("//*/div/h3")).getText();
+       driver.navigate().to("https://www.tempmailaddress.com/");
+       driver.findElement(By.xpath("//*[@id=\"schranka\"]/tr[1]/td[1]")).click();
+
+       driver.findElement(By.xpath("//*[@id=\"odesilatel\"]")).isDisplayed();
+
+       driver.findElement(By.xpath("//*[@id=\"predmet\"]")).isDisplayed();
+       driver.close();
+
+    }
+
  }
