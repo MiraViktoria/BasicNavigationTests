@@ -1,15 +1,16 @@
 package Homework;
 import com.cbt.utilities.BrowserFactory;
 import com.cbt.utilities.BrowserUtils;
+import com.cbt.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
+
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
+
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
+
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -70,23 +71,36 @@ public class HWForVytrackCalendarEventsPage {
 
     @Test(description = "Verify that “Title” column still displayed")
     public void test2() {
-     driver.findElement(By.cssSelector("[title='Grid Settings']")).click();
-     driver.findElement(By.cssSelector(".ui-sortable>tr+tr>td+td+td")).click();
-     driver.findElement(By.cssSelector(".ui-sortable>tr+*+tr>td+td+td")).click();
-     driver.findElement(By.cssSelector(".ui-sortable>tr+*+tr+tr>td+td+td")).click();
-     driver.findElement(By.cssSelector(".ui-sortable>tr+tr+*+tr+tr>td+td+td")).click();
-     driver.findElement(By.cssSelector(".ui-sortable>tr+tr+*+tr+tr+tr>td+td+td")).click();
 
-     WebElement Title = driver.findElement(By.cssSelector("a>[class='grid-header-cell__label']"));
-        System.out.println(Title.getText());
-        if (Title.isDisplayed()){
-            System.out.println("Title column still displayed");
+        ////label[text()='Calendar']/preceding-sibling::input[@type='checkbox']
+        //////td[text()='Invitation status']/preceding-sibling::label[@for='column-353']
 
-        }else {
-            System.out.println("Failed");
+        String locator = "";
+        WebElement checkBox = Driver.get().findElement(By.xpath(" "));
+        BrowserUtils.waitForVisibility(checkBox, 15);
+        BrowserUtils.waitForClickablility(checkBox, 15);
+        if (checkBox.isSelected()) {
+            checkBox.click();
         }
-        driver.close();
- }
+    }
+
+
+        //driver.findElement(By.cssSelector("[title='Grid Settings']")).click();
+     //driver.findElement(By.cssSelector(".ui-sortable>tr+tr>td+td+td")).click();
+     //driver.findElement(By.cssSelector(".ui-sortable>tr+*+tr>td+td+td")).click();
+     //driver.findElement(By.cssSelector(".ui-sortable>tr+*+tr+tr>td+td+td")).click();
+     //driver.findElement(By.cssSelector(".ui-sortable>tr+tr+*+tr+tr>td+td+td")).click();
+     //driver.findElement(By.cssSelector(".ui-sortable>tr+tr+*+tr+tr+tr>td+td+td")).click();
+     //WebElement Title = driver.findElement(By.cssSelector("a>[class='grid-header-cell__label']"));
+       // System.out.println(Title.getText());
+        //if (Title.isDisplayed()){
+          //  System.out.println("Title column still displayed");
+
+       // }else {
+         //   System.out.println("Failed");
+
+       // driver.close();
+ //}
 
       @Test(description = "Verify that “Save And Close”, “Save And New” and “Save” options are available")
       public void test3() {
