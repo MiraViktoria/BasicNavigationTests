@@ -104,9 +104,11 @@ public class HomeworkForTestNG {
         driver.navigate().to("https://www.tempmailaddress.com/");
         driver.findElement(By.xpath("//*[@id=\"schranka\"]/tr[1]/td[1]")).click();
 
-        driver.findElement(By.xpath("//*[@id=\"odesilatel\"]")).isDisplayed();
+        WebElement display = driver.findElement(By.xpath("//*[@id=\"odesilatel\"]"));
+        System.out.println(display.getText());
 
-        driver.findElement(By.xpath("//*[@id=\"predmet\"]")).isDisplayed();
+        WebElement dispay2 = driver.findElement(By.xpath("//*[@id=\"predmet\"]"));
+        System.out.println(dispay2.getText());
         driver.close();
 
     }
@@ -128,8 +130,9 @@ public class HomeworkForTestNG {
         driver.findElement(By.linkText("Autocomplete")).click();
         driver.findElement(By.xpath("//*[@id=\"myCountry\"]")).sendKeys("United States of America");
         driver.findElement(By.xpath("//*/div/form/input")).click();
-        driver.findElement(By.xpath("//*[@id=\"result\"]")).getText();
-        System.out.println("You selected: United States of America");
+        WebElement displayedMessage = driver.findElement(By.xpath("//*[@id=\"result\"]"));
+        System.out.println(displayedMessage.getText());
+
         driver.close();
 
     }
